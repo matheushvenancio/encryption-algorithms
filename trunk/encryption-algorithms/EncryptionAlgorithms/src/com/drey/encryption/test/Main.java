@@ -1,5 +1,6 @@
 package com.drey.encryption.test;
 
+import com.drey.encryption.Hill;
 import com.drey.encryption.Playfair;
 
 public class Main {
@@ -17,6 +18,9 @@ public class Main {
 		System.out.println("Encrypted: " + p.encrypt(text));
 		
 		System.out.println(p.showMatrixPosition());
+
+
+		Hill s = new Hill("testatest");
 	}
 	
 }
