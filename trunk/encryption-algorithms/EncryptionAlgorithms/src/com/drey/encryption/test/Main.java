@@ -15,6 +15,8 @@ public class Main {
 		System.out.println(p.showMatrix());
 		System.out.println("Replaced: " + p.showWithSpaces(p.replacedText(text)));
 		System.out.println("Encrypted: " + p.encrypt(text));
+		
+		System.out.println(p.showMatrixPosition());
 	}
 	
 }

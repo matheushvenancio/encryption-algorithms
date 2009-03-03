@@ -28,6 +28,7 @@ public class Playfair {
 			setPosFree(c);
 			keyABC += ((c == 'J') ? "" : "" + c);
 		}
+
 		while (n < keyABC.length()) {
 			c = keyABC.charAt(n++);
 			if (isLetter(c) && isPosFree(c)) {
@@ -86,6 +87,7 @@ public class Playfair {
 			x1 = x2;
 			x2 = x;
 		}
+		
 		return getChar(x1 + y1 * 5) + "" + getChar(x2 + y2 * 5);
 	}
 
@@ -93,8 +95,7 @@ public class Playfair {
 		String toReturn = "";
 		int i = 0;
 		while (i < text.length()) {
-			toReturn += swap(getPos(text.charAt(i++)),
-					getPos(text.charAt(i++)), direction + 5);
+			toReturn += swap(getPos(text.charAt(i++)), getPos(text.charAt(i++)), direction + 5);
 		}
 		return toReturn;
 	}
@@ -104,34 +105,35 @@ public class Playfair {
 	}
 
 	public String decrypt(String text) {
-		return _encrypt(crypttext(text), -1).toUpperCase();
+		return _encrypt(cryptText(text), -1).toUpperCase();
 	}
 
-	public String replacedText(String s) {
+	public String replacedText(String text) {
 		char c;
-		int n = 0, p;
+		int n = 0;
+		int p;
 		String t = "";
-		s = s.toLowerCase();
-		while (n < s.length()) {
-			c = s.charAt(n++);
-			if (c == 'j')
+		text = text.toLowerCase();
+		while (n < text.length()) {
+			c = text.charAt(n++);
+			if (c == 'j') {
 				c = 'i';
+			}
 			if (isLetter(c)) {
 				p = t.length() - 1;
-				t += (p >= 0 && c == t.charAt(p) && p % 2 == 0) ? "x" + c : ""
-						+ c;
+				t += (p >= 0 && c == t.charAt(p) && p % 2 == 0) ? "x" + c : "" + c;
 			}
 		}
 		return (t.length() % 2 == 0) ? t : t + "x";
 	}
 
-	private String crypttext(String s) {
+	private String cryptText(String text) {
 		char c;
 		int n = 0;
 		String t = "";
-		s = s.toUpperCase();
-		while (n < s.length()) {
-			c = s.charAt(n++);
+		text = text.toUpperCase();
+		while (n < text.length()) {
+			c = text.charAt(n++);
 			t += (isLetter(c)) ? c + "" : "";
 		}
 		return (t.length() % 2 == 0) ? t : t + "X";
@@ -154,8 +156,7 @@ public class Playfair {
 	public String showWithSpaces(String text) {
 		String toReturn = "";
 		for (int n = 0; n < text.length(); n++)
-			toReturn += text.charAt(n) + ((n % 2 == 1) ? " " : "")
-					+ ((n % 60 == 59) ? "\n" : "");
+			toReturn += text.charAt(n) + ((n % 2 == 1) ? " " : "") + ((n % 60 == 59) ? "\n" : "");
 		return toReturn + "\n";
 	}
 
