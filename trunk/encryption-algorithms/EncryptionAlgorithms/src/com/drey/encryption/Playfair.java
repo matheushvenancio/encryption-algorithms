@@ -87,7 +87,7 @@ public class Playfair {
 			x1 = x2;
 			x2 = x;
 		}
-		
+
 		return getChar(x1 + y1 * 5) + "" + getChar(x2 + y2 * 5);
 	}
 
@@ -159,5 +159,4 @@ public class Playfair {
 			toReturn += text.charAt(n) + ((n % 2 == 1) ? " " : "") + ((n % 60 == 59) ? "\n" : "");
 		return toReturn + "\n";
 	}
-
 }

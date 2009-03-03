@@ -1,49 +1,113 @@
 package com.drey.encryption;
 
 /**
- * Implementation for the Hill encryption algorithm.
+ * Implementation for the HILL encryption algorithm.
  * 
  * @author Tolnai Andrei Ciprian
  * 
  */
 public class Hill {
-	
-	private int [][] keyMatrix;
+
+	private int[][] keyMatrix;
 	private int set;
-	
+
 	@SuppressWarnings("unused")
-	private Hill(){
+	private Hill() {
 		// default constructor hidden
 	}
-	
-	public Hill(String key){
-		if (key!=null && Math.sqrt(key.length())==Math.floor(Math.sqrt(key.length()))){
-			set = (int)Math.sqrt(key.length());
+
+	public Hill(String key) {
+		if (key != null && Math.sqrt(key.length()) == Math.floor(Math.sqrt(key.length()))) {
+			set = (int) Math.sqrt(key.length());
 			int letterPosition[] = new int[26];
+
 			for (char c = 'A'; c <= 'Z'; c++) {
-				letterPosition[c - 'A'] = c-'A';
+				letterPosition[c - 'A'] = c - 'A';
 			}
-			
+
 			keyMatrix = new int[set][set];
-			
+
 			int n = 0;
-			int ii=0, jj=0;
+			int ii = 0, jj = 0;
 			while (n < key.length()) {
 				char c = key.toUpperCase().charAt(n++);
 				keyMatrix[ii][jj] = letterPosition[c - 'A'];
 				jj++;
-				if (jj>set){
+				if (jj >= set) {
 					ii++;
 					jj = 0;
 				}
 			}
-			
-			for (int i=0; i<set; i++) {
-				for (int j=0; j<set; j++) {
-					System.out.print(keyMatrix[i][j] + " ");
-				}
-				System.out.print("\n");
+
+		} else {
+			throw new IllegalArgumentException();
+		}
+	}
+
+	public String encrypt(String text) {
+		StringBuilder toReturn = new StringBuilder();
+		int n = 0;
+		int j = 0;
+		int[] textPart = new int[set];
+		int mod = text.length() % set;
+		if (mod!=0){
+			mod = set - mod;
+			for (int i=0; i<mod; i++){
+				text = text.concat("x");
 			}
 		}
+		while (n < text.length()) {
+			char c = text.toUpperCase().charAt(n++);
+			textPart[j++] = c - 'A';
+			if (j >= set) {
+
+				int[] multiplyResult = multiplyMatrixWithVector(keyMatrix, textPart);
+				multiplyResult = modulo26(multiplyResult);
+
+				for (int i = 0; i < multiplyResult.length; i++) {
+					toReturn.append((char) (multiplyResult[i] + 'A'));
+				}
+
+				j = 0;
+			}
+		}
+		return toReturn.toString();
+	}
+
+	public String showKeyMatrix() {
+		StringBuilder toReturn = new StringBuilder();
+		toReturn.append("Key Matrix:\n");
+		for (int i = 0; i < set; i++) {
+			for (int j = 0; j < set; j++) {
+				toReturn.append(keyMatrix[i][j] + " ");
+			}
+			toReturn.append("\n");
+		}
+		return toReturn.toString();
+	}
+
+	private int[] multiplyMatrixWithVector(int[][] matrix, int[] vector) {
+		int[] result = new int[vector.length];
+		int i, j;
+
+		if (matrix[1].length != vector.length) {
+			System.out.println("Matrix and vector are not compatible!");
+			System.exit(2);
+		}
+
+		for (i = 0; i <= matrix.length - 1; i++) {
+			result[i] = 0;
+			for (j = 0; j <= vector.length - 1; j++)
+				result[i] += matrix[i][j] * vector[j];
+		}
+		return result;
+	}
+
+	private int[] modulo26(int[] vector) {
+		int[] result = new int[vector.length];
+		for (int i = 0; i < vector.length; i++) {
+			result[i] = vector[i] - (int) Math.floor((float) vector[i] / 26) * 26;
+		}
+		return result;
 	}
 }
