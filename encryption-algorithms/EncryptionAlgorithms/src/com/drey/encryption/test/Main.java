@@ -1,11 +1,11 @@
 package com.drey.encryption.test;
 
-import com.drey.encryption.Playfair;
+import com.drey.encryption.Hill;
 
 public class Main {
 	
 	public static void main(String[] args) {
-		
+		/*
 		String text = "balloon";
 		String key = "criptare";
 		Playfair p = new Playfair(key);
@@ -19,14 +19,14 @@ public class Main {
 		
 		//System.out.println(p.showMatrixPosition());
 
-
-		/*
+		 */
+		
 		Hill hill = new Hill("GYBNQKURP");
 		
 		System.out.println(hill.showKeyMatrix());
 		
 		System.out.println(hill.encrypt("ACT"));
-		*/
+		
 	}
 	
 }
