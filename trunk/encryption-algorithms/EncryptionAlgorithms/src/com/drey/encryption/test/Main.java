@@ -28,7 +28,7 @@ public class Main {
 		System.out.println(hill.encrypt("ACT"));
 		*/
 		
-		String toEncrypt = "123456789";//90123";
+		String toEncrypt = "1234567890";//90123";
 		String key = "123";//23456";//78901234567";
 		IDEA idea = new IDEA(key);
 		
@@ -36,8 +36,8 @@ public class Main {
 		String decrypted = idea.decrypt(encrypted);
 		
 		System.out.println("Key: " + key);
-		System.out.println("Text: " + toEncrypt);
-		System.out.println("Ecrypted: " + encrypted);
+		System.out.println("Text     : " + toEncrypt);
+		System.out.println("Ecrypted : " + encrypted);
 		System.out.println("Decrypted: " + decrypted);
 	}
 	
