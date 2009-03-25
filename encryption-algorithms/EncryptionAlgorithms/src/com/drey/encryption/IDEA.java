@@ -22,10 +22,13 @@ public class IDEA extends Encryption {
 		setKey(keyStr);
 	}
 
+	private final String charToAdd = " ";
+	
 	@Override
 	public String decrypt(String text) {
 		StringBuffer result = new StringBuffer();
 
+		int charactersAdded = 0;
 		List<String> encryptedTextList = new ArrayList<String>();
 		if (text != null) {
 			if (text.length() == 8) {
@@ -35,8 +38,24 @@ public class IDEA extends Encryption {
 				if (mod != 0) {
 					mod = blockSize - mod;
 					for (int i = 0; i < mod; i++) {
-						text = text.concat(" ");
+						charactersAdded++;
+						text = text.concat(charToAdd);
 					}
+					/*
+					int x = text.length() + charactersAdded;
+					int y = x-blockSize;
+					String s = text.substring(y, text.length());
+					
+					for (int i=0; i<charactersAdded; i++){
+						s = s.concat(charToAdd);
+					}
+					System.out.println(s);
+					
+					byte[] s2 = new byte[s.getBytes().length];
+					decrypt(s.getBytes(), 2, s2, 2);
+					
+					System.out.println(new String (s2));
+					*/
 				}
 
 				for (int i = 0; i < text.length() / blockSize; i++) {
@@ -54,6 +73,7 @@ public class IDEA extends Encryption {
 			}
 		}
 
+		//return result.toString().substring(0, result.length()-charactersAdded);
 		return result.toString();
 	}
 
@@ -61,6 +81,7 @@ public class IDEA extends Encryption {
 	public String encrypt(String text) {
 		StringBuffer result = new StringBuffer();
 
+		int charactersAdded = 0;
 		List<String> clearTextList = new ArrayList<String>();
 		if (text != null) {
 			if (text.length() == 8) {
@@ -70,7 +91,8 @@ public class IDEA extends Encryption {
 				if (mod != 0) {
 					mod = blockSize - mod;
 					for (int i = 0; i < mod; i++) {
-						text = text.concat(" "); //add white spaces to the end
+						text = text.concat(charToAdd); //add white spaces to the end
+						charactersAdded++;
 					}
 				}
 				
@@ -89,6 +111,7 @@ public class IDEA extends Encryption {
 			}
 		}
 
+		//return result.toString().substring(0, result.length()-charactersAdded);
 		return result.toString();
 	}
 
