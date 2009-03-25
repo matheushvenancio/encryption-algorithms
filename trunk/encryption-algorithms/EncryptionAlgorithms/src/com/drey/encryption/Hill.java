@@ -6,7 +6,7 @@ package com.drey.encryption;
  * @author Tolnai Andrei Ciprian
  * 
  */
-public class Hill {
+public class Hill extends Encryption {
 
 	private int[][] keyMatrix;
 	private int set;
@@ -104,5 +104,10 @@ public class Hill {
 			result[i] = vector[i] - (int) Math.floor((float) vector[i] / 26) * 26;
 		}
 		return result;
+	}
+
+	public String decrypt(String text) {
+		// TODO: not implemented yet
+		return null;
 	}
 }
