@@ -6,7 +6,7 @@ package com.drey.encryption;
  * @author Tolnai Andrei Ciprian
  * 
  */
-public class Playfair {
+public class Playfair extends Encryption {
 
 	private int matrix[] = new int[25];
 	private int letterPosition[] = new int[26];
