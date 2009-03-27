@@ -17,6 +17,7 @@ public class Hill extends Encryption {
 	}
 
 	public Hill(String key) {
+		this.name = Hill.class.getSimpleName();
 		if (key != null && Math.sqrt(key.length()) == Math.floor(Math.sqrt(key.length()))) {
 			set = (int) Math.sqrt(key.length());
 			

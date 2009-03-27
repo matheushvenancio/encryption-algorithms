@@ -20,6 +20,7 @@ public class Playfair extends Encryption {
 	}
 
 	public Playfair(String key) {
+		this.name = Playfair.class.getSimpleName();
 		char c;
 		int n = 0, i = 0;
 		String keyABC = key.toUpperCase().replaceAll("J", "I");
@@ -40,7 +41,7 @@ public class Playfair extends Encryption {
 		setPos('J', getPos('I'));
 	}
 
-	private char getChar(int index) {
+	public char getChar(int index) {
 		return (char) (matrix[index] + 'A');
 	}
 
@@ -158,5 +159,9 @@ public class Playfair extends Encryption {
 		for (int n = 0; n < text.length(); n++)
 			toReturn += text.charAt(n) + ((n % 2 == 1) ? " " : "") + ((n % 60 == 59) ? "\n" : "");
 		return toReturn + "\n";
+	}
+
+	public void setKey(String key) {
+		this.key = key;
 	}
 }

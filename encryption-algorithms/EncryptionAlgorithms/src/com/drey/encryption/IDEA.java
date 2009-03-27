@@ -17,6 +17,7 @@ public class IDEA extends Encryption {
 	 * @param keyStr
 	 */
 	public IDEA(String keyStr) {
+		this.name = IDEA.class.getSimpleName();
 		keySize = 16;
 		blockSize = 8;
 		setKey(keyStr);

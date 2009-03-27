@@ -2,6 +2,8 @@ package com.drey.encryption;
 
 public abstract class Encryption extends Utils {
 
+	protected String name;
+	
 	/**
 	 * How big a block is
 	 */
@@ -53,5 +55,9 @@ public abstract class Encryption extends Utils {
 		}
 
 		return key;
+	}
+
+	public String getName() {
+		return name;
 	}
 }
