@@ -29,8 +29,8 @@ public class DefaultUI extends JPanel implements ActionListener {
 	private JTextField outputTextFieldLabel = new JTextField();
 
 	private void init() {
-		inputTextField.setPreferredSize(new Dimension(200, 20));
-		outputTextFieldLabel.setPreferredSize(new Dimension(200, 20));
+		inputTextField.setPreferredSize(new Dimension(600, 20));
+		outputTextFieldLabel.setPreferredSize(new Dimension(600, 20));
 		outputTextFieldLabel.setEnabled(false);
 		
 		encryptButton.addActionListener(this);
