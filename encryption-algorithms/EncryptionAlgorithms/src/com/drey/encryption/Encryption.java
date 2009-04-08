@@ -3,7 +3,7 @@ package com.drey.encryption;
 public abstract class Encryption extends Utils {
 
 	protected String name;
-	
+
 	/**
 	 * How big a block is
 	 */
@@ -55,6 +55,22 @@ public abstract class Encryption extends Utils {
 		}
 
 		return key;
+	}
+
+	/**
+	 * Set the key.
+	 * 
+	 * @param key
+	 */
+	protected abstract void setKey(byte[] key);
+
+	/**
+	 * Utility routine to set the key from a string.
+	 * 
+	 * @param keyStr
+	 */
+	protected void setKey(String keyStr) {
+		setKey(makeKey(keyStr));
 	}
 
 	public String getName() {

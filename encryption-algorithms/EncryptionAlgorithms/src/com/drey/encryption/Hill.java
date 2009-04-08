@@ -40,6 +40,7 @@ public class Hill extends Encryption {
 		}
 	}
 
+	@Override
 	public String encrypt(String text) {
 		StringBuilder toReturn = new StringBuilder();
 		int n = 0;
@@ -107,8 +108,14 @@ public class Hill extends Encryption {
 		return result;
 	}
 
+	@Override
 	public String decrypt(String text) {
 		// TODO: not implemented yet
 		return null;
+	}
+
+	@Override
+	protected void setKey(byte[] key) {
+		// not used
 	}
 }

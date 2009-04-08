@@ -1,6 +1,6 @@
 package com.drey.encryption.test;
 
-import com.drey.encryption.IDEA;
+import com.drey.encryption.DES;
 
 public class Main {
 	
@@ -30,10 +30,10 @@ public class Main {
 		
 		String toEncrypt = "1234567890";//90123";
 		String key = "123";//23456";//78901234567";
-		IDEA idea = new IDEA(key);
+		DES des = new DES(key);
 		
-		String encrypted = idea.encrypt(toEncrypt);
-		String decrypted = idea.decrypt(encrypted);
+		String encrypted = des.encrypt(toEncrypt);
+		String decrypted = des.decrypt(encrypted);
 		
 		System.out.println("Key: " + key);
 		System.out.println("Text     : " + toEncrypt);

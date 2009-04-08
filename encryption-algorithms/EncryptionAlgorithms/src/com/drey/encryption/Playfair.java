@@ -101,10 +101,12 @@ public class Playfair extends Encryption {
 		return toReturn;
 	}
 
+	@Override
 	public String encrypt(String text) {
 		return _encrypt(replacedText(text).toUpperCase(), 1);
 	}
 
+	@Override
 	public String decrypt(String text) {
 		return _encrypt(cryptText(text), -1).toUpperCase();
 	}
@@ -163,5 +165,10 @@ public class Playfair extends Encryption {
 
 	public void setKey(String key) {
 		this.key = key;
+	}
+
+	@Override
+	protected void setKey(byte[] key) {
+		// not used
 	}
 }
