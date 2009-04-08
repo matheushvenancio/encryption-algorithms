@@ -117,15 +117,6 @@ public class IDEA extends Encryption {
 	}
 
 	/**
-	 * Utility routine to set the key from a string.
-	 * 
-	 * @param keyStr
-	 */
-	private void setKey(String keyStr) {
-		setKey(makeKey(keyStr));
-	}
-
-	/**
 	 * Key routines
 	 */
 	private int[] encryptKeys = new int[52];
@@ -169,7 +160,7 @@ public class IDEA extends Encryption {
 	 * 
 	 * @param key
 	 */
-	private void setKey(byte[] key) {
+	protected void setKey(byte[] key) {
 		int k1, k2, j;
 		int t1, t2, t3;
 
