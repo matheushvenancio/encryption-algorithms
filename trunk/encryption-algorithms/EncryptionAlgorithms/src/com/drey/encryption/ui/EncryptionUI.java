@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.drey.encryption.DES;
 import com.drey.encryption.Encryption;
 import com.drey.encryption.Hill;
 import com.drey.encryption.IDEA;
@@ -61,7 +62,8 @@ public class EncryptionUI extends JFrame implements ActionListener {
 		this.getContentPane().setSize(800, 605);
 		this.setVisible(true);
 		this.repaint();
-		pack();
+		this.pack();
+		this.setTitle("Algoritmi de criptare");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
@@ -101,6 +103,7 @@ public class EncryptionUI extends JFrame implements ActionListener {
 		encryptionAlgorithms.add(new Playfair(key));
 		encryptionAlgorithms.add(new Hill(key));
 		encryptionAlgorithms.add(new IDEA(key));
+		encryptionAlgorithms.add(new DES(key));
 	}
 
 	private void initComboBoxItems() {

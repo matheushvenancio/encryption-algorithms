@@ -18,7 +18,7 @@ public class DES extends Encryption {
 	 * @param keyStr
 	 */
 	public DES(String keyStr) {
-		this.name = IDEA.class.getSimpleName();
+		this.name = DES.class.getSimpleName();
 		keySize = 8;
 		blockSize = 8;
 		setKey(keyStr);
